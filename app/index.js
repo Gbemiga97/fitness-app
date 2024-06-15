@@ -3,10 +3,15 @@ import React from 'react'
 import tw from 'twrnc'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import { LinearGradient } from 'expo-linear-gradient';
+import Animated,{ FadeIn, FadeInDown, FadeOut } from 'react-native-reanimated';
+import { useRouter } from 'expo-router';
 
 
 
 const App = () => {
+
+    const router = useRouter()
+
   return (
     <View style={tw`flex-1 flex justify-end`}>
         <Image style={tw`h-full w-full absolute`} source={require('../assets/images/bg.jpg')} />
@@ -21,8 +26,8 @@ const App = () => {
         }}
     start={{x: 0.5, y: 0}}
     end={{x: 0.5, y: 0.8}}
-    className='space-y-8'>
-        <View style={tw`flex items-center pb-6`} >
+    className='gap-y-8'>
+        <Animated.View entering={FadeInDown.delay(100).springify()} style={tw`flex items-center`} >
             <Text style={{
                 fontSize: hp(5),
                 color: 'white',
@@ -42,9 +47,9 @@ const App = () => {
                 >
                 For you
             </Text>
-        </View>
+        </Animated.View>
 
-        <View>
+        <Animated.View entering={FadeInDown.delay(200).springify()} className='pb-12'>
             <TouchableOpacity style={{
                 height: hp(7),
                 width: wp(80),
@@ -53,9 +58,10 @@ const App = () => {
                 justifyContent: 'center',
                 marginHorizontal: 'auto',
                 borderRadius: '999px',
-                border: '2px solid neutral'
+                border: '2px solid white',
             }}
             className="bg-rose-500"
+            onPress={() => router.push('home')}
             >
                 <Text style={{
                     fontSize: hp(3),
@@ -63,10 +69,10 @@ const App = () => {
                     fontWeight: 'bold',
                     letterSpacing: '0.1rem'
                     }}>
-                    Get Started
+                    Get Started 
                 </Text>
             </TouchableOpacity>
-        </View>
+        </Animated.View>
     </LinearGradient>
     </View>
   )
