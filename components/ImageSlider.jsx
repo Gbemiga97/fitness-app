@@ -1,31 +1,27 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import Carousel from 'react-native-snap-carousel'
-import { sliderImages } from '../constants'
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-
-
-
+import { SliderBox } from 'react-native-image-slider-box'
+import tw from 'twrnc'
 
 const ImageSlider = () => {
+
+    const sliderImages = [
+        require('../assets/images/gym1.webp'),
+        require('../assets/images/gym2.webp'),
+        require('../assets/images/gym3.webp'),
+        require('../assets/images/gym4.webp'),
+        require('../assets/images/gym5.webp'),
+    ]
+
   return (
-    <Carousel
-    data={sliderImages}
-    loop={true}
-    autoplay={true}
-    renderItem={ItemCard}
-    hasParallaxImages={true}
-    sliderWidth={wp(100)}
-    firstItem={1}
-    autoplayInterval={4000}
-    itemWidth={wp(100)-70}
-    slideStyle={{display: "flex", alignItems: "center"}}
+    <View style={tw`flex-1 items-center`}>
+    <SliderBox images={sliderImages} dotColor='red' 
+    inactiveDotColor='black'
+    ImageComponentStyle={{borderRadius: 15, width: "93%", marginTop: 15}}
+    autoplay circleLoop
     />
+  </View>
   )
-}
-
-const ItemCard = () => {
-
 }
 
 export default ImageSlider
