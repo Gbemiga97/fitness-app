@@ -3,7 +3,6 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import tw from 'twrnc'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import ImageSlider from '../components/ImageSlider';
 
 
 const Home = () => {
@@ -61,7 +60,7 @@ const Home = () => {
 
       {/* image slider */}
       <View>
-        <ImageSlider />
+        <Text>slider</Text>
       </View>
     </SafeAreaView>
   )
